@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기</title>
+</head>
+<body>
+    <div><span id="order">1</span>번째 참가자</div>
+    <div>제시어: <span id="word"></span></div>
+    <input type="text" />
+    <button>입력</button>
+    <!-- <button class="hello">hello</button> -->
+    <!-- <button class="hello">hello</button> -->
+    <script>
+        // 자바스크립트 코드 작성
+        // const nOfPlayer = prompt("몇 명이 참가하나요?");  --> 실행의 결과 = string
+        // 입력값을 number type으로 변경하기
+        // 1. parseInt(str)
+        //  - const nOfPlayer = parseInt(prompt("몇 명이 참가하나요?"));
+        // 2. Number(str)
+        //  - const nOfPlayer = Number(prompt("몇 명이 참가하나요?"));
+        const nOfPlayer = Number(prompt("몇 명이 참가하나요?"));  
+        // console.log("typeof :", typeof nOfPlayer);
+        // alert("typeof :"+typeof nOfPlayer);
+        // const test = confirm("진짜로 시작하실건가요?");
+        // const $input = document.querySelector('input');
+        // HTMLCollection : 배열과 유사
+        // console.log($input);
+        // const $$button = document.querySelectorAll('button');
+        // NodeList : 배열과 유사
+        // console.log($$button[2]);
+        // const $order = document.querySelector('#order');
+        // const $word = document.querySelector('#word');
+        // const $orderOld = document.getElementById('order');
+
+        // console.log($order);
+        // console.log($orderOld);
+        // const $button = document.querySelectorAll('.hello');
+        // document.querySelector('.hello'); 여러개 있으면 최초의 엘리먼트가 선택됨
+        // const $button = document.getElementsByClassName('hello');
+        // console.log($button);
+        
+        // #container > div:nth-child(1)
+        
+        // const onClickBtn = (event) => {
+        //     console.log('버튼 누름')
+        // };
+
+        const $button = document.querySelector('button');
+        // $button.addEventListener(
+        //     'click',    // 이벤트명
+        //     onClickBtn  // 이벤트 리스너 (함수)
+        //     // 호출은 이벤트가 발생하면 js 엔진이 실행시켜줌 (callback)
+        // );
+        $button.addEventListener (
+            'click',
+            (event) => {
+                console.log('버튼 누름2');
+            }
+        );
+
+        const $input = document.querySelector('input');
+        $input.addEventListener (
+            'input',
+            (event) => {
+                console.log('이벤트가 발생한 엘리먼트 ', event.target);
+                console.log('입력한 글자 ', event.target.value);
+            }
+            )
+    </script>
+</body>
+</html>

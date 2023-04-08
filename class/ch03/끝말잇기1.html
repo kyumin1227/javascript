@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기</title>
+</head>
+
+<body>
+    <div><span id="order">1</span>번째 참가자</div>
+    <div>제시어: <span id="word"></span></div>
+    <input type="text" />
+    <button>입력</button>
+    <!-- <button class="hello">hello</button> -->
+    <!-- <button class="hello">hello</button> -->
+    <script>
+        const nOfPlayer = Number(prompt("몇 명이 참가하나요?"));
+        const $input = document.querySelector('input');
+        const $button = document.querySelector('button');
+        const $word = document.querySelector('#word');  // span태그 엘리먼트 선택
+        const $order = document.querySelector('#order');
+        let jesiWord; // 초기값 undefined
+        let inputtedWord;   // 참가자의 입력값
+       
+        const onClickButton = () => {
+            if(!jesiWord) { // !undefined 최초실행
+                jesiWord = inputtedWord;    // 입력한 단어를 제시어로 저장
+                $word.textContent = jesiWord;   // 화면에 표시
+
+                const order = Number($order.innerHTML);
+                if(order+1 > nOfPlayer) {
+                    $order.innerHTML = 1;
+                } else {
+                    $order.innerHTML = order+1;
+
+                    $input.value = '';
+                    $input.focus();
+                }
+            } else {    
+                if(jesiWord[jesiWord.length-1]===inputtedWord[0]) {
+                    // // 입력단어가 올바름
+                    // alert('올바름');
+                    // jesiWord = inputtedWord;    // 입력한 단어를 제시어로 저장
+                    // $word.textContent = jesiWord;   // 화면에 표시
+                    
+                    // const order = Number($order.innerHTML);
+                    // if (order + 1 > nOfPlayer) {
+                    //     $order.innerHTML = 1;
+                    // } else {
+                    //     $order.innerHTML = order + 1;
+                    // }
+                    let order = Number($order.innerHTML);
+                    $order.innerHTML = (order++)%nOfPlayer+1;
+
+                    $input.value = '';
+                    $input.focus();
+                } else {
+                    alert('틀림');
+                }
+            }
+        };
+        const onInput = (event) => {
+            inputtedWord = event.target.value;
+        };
+        $button.addEventListener('click', onClickButton);
+        $input.addEventListener('input', onInput);
+    </script>
+</body>
+
+</html>
