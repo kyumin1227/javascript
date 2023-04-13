@@ -39,7 +39,7 @@
             <button id="divide">/</button>
         </div>
         <div class="row">
-            <button id="num-1">C</button>
+            <button id="clear">C</button>
             <button id="num-0">0</button>
             <button id="calculate">=</button>
             <button id="multiply">*</button>
@@ -54,6 +54,9 @@
         const $result = document.querySelector('#result');
         const onClickNum = (numStr) => (event) => {
             if (operator) {
+                if(numTwo) {
+                    $result.value = '';
+                }
                 numTwo += numStr;
             } else {
                 numOne += numStr;
