@@ -1,0 +1,44 @@
+button {
+    border-radius: 45%;
+    transition: background-color 0.3s;
+    
+}
+button:hover {
+    background-color: yellowgreen;
+}
+button:nth-child(1n):active {
+    background-color: orange;
+    color: yellowgreen;
+    animation: click 1s;
+}
+button:nth-child(2n):active {
+    background-color: yellow;
+    color: yellowgreen;
+    animation: click 1s;
+}
+button:nth-child(3n):active {
+    background-color: purple;
+    color: yellowgreen;
+    animation: click 1s;
+}
+input {
+    border: 2px solid black;
+}
+body > div{
+    border: 2px solid wheat;
+    display: flex;
+    flex-direction: column;
+    width: 261px;
+}
+input:active {
+    background-color: black;
+}
+@keyframes click {
+    from {
+        box-shadow: 5px 5px 5px rgb(77, 73, 73);
+        transform: translateX(5px);
+    }
+    to {
+        box-shadow: 0px;
+    }
+}
