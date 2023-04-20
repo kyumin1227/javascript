@@ -63,10 +63,10 @@
             }
             $result.value += numStr;
         };
-        const onClickOperator = (op) => () => {
+        const onClickOperator = (event) => {
             if (numOne) {
-                operator = op;
-                $operator.value = op;
+                operator = event.target.innerText;
+                $operator.value = event.target.innerText;
             } else {
                 alert('숫자를 먼저 입력하세요.');
             }
@@ -137,10 +137,11 @@
         //         numOne += '9';
         //     }
         //     $result.value += '9';});
-        document.querySelector('#plus').addEventListener('click', onClickOperator('+'));
-        document.querySelector('#minus').addEventListener('click', onClickOperator('-'));
-        document.querySelector('#divide').addEventListener('click', onClickOperator('/'));
-        document.querySelector('#multiply').addEventListener('click', onClickOperator('*'));
+        const plus = document.querySelector('#plus');
+        plus.addEventListener('click', onClickOperator);
+        document.querySelector('#minus').addEventListener('click', onClickOperator);
+        document.querySelector('#divide').addEventListener('click', onClickOperator);
+        document.querySelector('#multiply').addEventListener('click', onClickOperator);
         document.querySelector('#calculate').addEventListener('click', () => { });
         document.querySelector('#clear').addEventListener('click', () => { });
     </script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form">
+        <input type="text" id="input">
+        <button>확인</button>
+    </form>
+    <div id="logs">
+
+    </div>
+
+    <script>
+        const $input = document.querySelector("#input");
+        const $form = document.querySelector("#form");
+        const $logs = document.querySelector("#logs");
+
+        const numbers = Array(9).fill().map((v,i) => i+1);
+        const answer = [];
+
+        // console.log(numbers);
+
+        for(let n = 0; n < 4; n++) {
+            const index = getRNum(0, 8);
+            answer.push(numbers[index]); 
+            numbers.splice(index, 1);
+
+        }
+    </script>
+</body>
+</html>
