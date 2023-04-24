@@ -31,6 +31,59 @@
             numbers.splice(index, 1);
 
         }
+
+        const tried = [];
+        const checkInput = (input) => {
+            if (input.length !== 4) {
+                return alert("4자리 숫자로 입력해주세요.");
+            } 
+            if ((new Set(input)).size !==4) {
+                return alert("중복을 제거해주세요");
+            }
+            if (tried.includes(input)) {
+                return alert("이미 시도한 값입니다.");
+            }
+        }
+
+        $form.addEventListener("submit", 
+        (event) => {
+            event.preventDefault();
+            const value = $input.value;
+            $input.value = "";
+        })
+
+        let nOfStrike = 0;
+        let nOfBall = 0;
+        
+        // for(let i = 0; i < answer.length; i++) {
+        //     const index = value.indexOf(answer[i]);
+        //     if(index > -1) {    // indexOf() 못찾으면 -1 반환, 찾으면 해당하는 index 번호값 반환
+        //         if(index === i) {
+        //             nOfStrike++;
+        //         } else {
+        //             nOfBall++;
+        //         }
+        //     }
+        // }
+
+        // forEach로 수정
+
+        answer.forEach((answerValue, index) => {
+            const index = value.indexOf(String(answerValue));
+            // String(): 문자열 객체를 생성하는 함수
+            // Number(): 숫자 객체를 생성하는 함수
+            // Date(), Array() ...
+            if (index > -1) {    // indexOf() 못찾으면 -1 반환, 찾으면 해당하는 index 번호값 반환
+                if(index === i) {
+                    nOfStrike++;
+                } else {
+                    nOfBall++;
+                }
+            }
+        })
+
+        $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement('br'));
+
     </script>
 </body>
 </html>
