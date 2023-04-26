@@ -18,6 +18,7 @@ for (let n = 0; n <= 3; n++) {
 console.log(answer);
 
 const tries = [];
+let outCount = 0;
 
 function checkInput(input) { 
     if (input.length !== 4) {
@@ -43,13 +44,15 @@ $form.addEventListener("submit", (event) => {
         return;
     }
     if (tries.length >= 9) {
-        const message = document.createTextNode(`패배! 정답은 ${answer.join("")}`);
-        $logs.appendChild(message);
+        // const message = document.createTextNode(`패배! 정답은 ${answer.join("")}`);
+        // $logs.appendChild(message);
+        $logs.append(`패배! 정답은 ${answer.join("")}`);
         return;
     }
 
     let strike = 0;
     let ball = 0;
+
     for (let i = 0; i < 4; i++) {
         const index = value.indexOf(answer[i]);
         if (i == index) {
@@ -70,6 +73,13 @@ $form.addEventListener("submit", (event) => {
     //         }
     //     }
     // }
-    $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement("br"));
+    if (strike >= 1 || ball >= 1) {
+        $logs.append(`${value}: ${strike} 스트라이크 ${ball} 볼`, document.createElement("br"));
+    } else {
+        outCount++;
+        $logs.append(`${outCount} 아웃`, document.createElement("br"));
+        if (outCount == 3) $logs.append(`3진 아웃 패배! 정답은 ${answer.join("")}`);
+    }
+    
     tries.push(value);
 })
