@@ -41,7 +41,7 @@
         const changeComputerHand = () => {
             if (computerChoice === "rock") {
                 computerChoice = "scissors";
-            } else if (computerChoice === " scissors") {
+            } else if (computerChoice === "scissors") {
                 computerChoice = "paper";
             } else if (computerChoice === "paper") {
                 computerChoice = "rock";
@@ -50,7 +50,22 @@
             $computer.style.backgroundSize = "auto 200px";
         }
 
-        setInterval(changeComputerHand, 50);
+        let intervalId = setInterval(changeComputerHand, 50);
+        let clickAble = true;
+        const clickButton = () => {
+                clearInterval(intervalId);
+                if(clickAble == true) {
+                    clickAble = false;
+                    setTimeout(() => {
+                        clickAble = true;
+                        intervalId = setInterval(changeComputerHand, 50);
+                    }, 1000);
+                }
+            }
+
+        $rock.addEventListener("click", clickButton);
+        $scissors.addEventListener("click", clickButton);
+        $paper.addEventListener("click", clickButton);
     </script>
 </body>
 </html>
