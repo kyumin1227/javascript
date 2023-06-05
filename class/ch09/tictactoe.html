@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>틱택토</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid black;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        const {body} = document;
+        const $table = document.createElement("table");
+        const $result = document.createElement("div");
+        const rows = [];
+
+        for (let i = 1; i <= 3; i++) {
+            const $tr = document.createElement("tr");
+            const cells = [];
+            for (let j = 1; j <= 3; j++) {
+                const $td = document.createElement("td");
+                cells.push($td);
+                $tr.appendChild($td);
+            }
+            rows.push(cells);
+            $table.appendChild($tr);
+        }
+        body.appendChild($table);
+        body.appendChild($result);
+    </script>
+</body>
+</html>
