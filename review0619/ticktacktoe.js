@@ -87,6 +87,20 @@ const callback = (event) => {
     return;
   }
   turn = turn === "X" ? "O" : "X"; // 턴 변경
+
+  // 컴퓨터 턴
+  let computer = false;
+  while (!computer) {
+    const i = Math.floor(Math.random() * 3);
+    const j = Math.floor(Math.random() * 3);
+    console.log(i, j);
+    if (rows[i][j].textContent === "") {
+      rows[i][j].textContent = turn;
+      computer = true;
+    }
+  }
+
+  turn = turn === "X" ? "O" : "X"; // 컴퓨터 턴 종료
 };
 
 $table.addEventListener("click", callback);
