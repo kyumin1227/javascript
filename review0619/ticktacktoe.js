@@ -90,14 +90,22 @@ const callback = (event) => {
 
   // 컴퓨터 턴
   let computer = false;
+  let i;
+  let j;
   while (!computer) {
-    const i = Math.floor(Math.random() * 3);
-    const j = Math.floor(Math.random() * 3);
+    i = Math.floor(Math.random() * 3);
+    j = Math.floor(Math.random() * 3);
     console.log(i, j);
     if (rows[i][j].textContent === "") {
       rows[i][j].textContent = turn;
       computer = true;
     }
+  }
+  const computerWin = checkWinner(rows[i][j]);
+  if (computerWin) {
+    $result.textContent = `컴퓨터 승리!`;
+    $table.removeEventListener("click", callback);
+    return;
   }
 
   turn = turn === "X" ? "O" : "X"; // 컴퓨터 턴 종료
